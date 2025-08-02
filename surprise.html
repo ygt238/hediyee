@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>3. Yıl Sürprizi</title>
+  <style>
+    body {
+      margin: 0;
+      background: #ffffff;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      color: #333;
+    }
+    header {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 20px;
+      gap: 15px;
+      background: #0077B6;
+    }
+    header button {
+      background: #ffffff;
+      border: 2px solid #0077B6;
+      color: #0077B6;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    header button:hover {
+      background: #0077B6;
+      color: #ffffff;
+    }
+    section {
+      display: none;
+      padding: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .active {
+      display: block;
+    }
+    .song-card {
+      background: #f0f8ff;
+      border: 2px solid #0077B6;
+      border-radius: 15px;
+      overflow: hidden;
+      width: 300px;
+      margin: 15px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .song-card:hover {
+      transform: scale(1.05);
+    }
+    .song-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .song-card p {
+      padding: 10px;
+      margin: 0;
+      text-align: center;
+      font-size: 14px;
+      color: #0077B6;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 150px;
+    }
+    .gallery-item {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      overflow: hidden;
+      border-radius: 15px;
+      border: 2px solid #0077B6;
+      cursor: pointer;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .gallery-item .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,119,182,0.7);
+      color: #fff;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+    }
+    .gallery-item:hover .overlay {
+      opacity: 1;
+    }
+    .poem-card, .quote-card {
+      background: #f0f8ff;
+      border: 2px solid #0077B6;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 20px auto;
+      max-width: 600px;
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #0077B6;
+    }
+    .spotify-embed {
+      margin-top: 20px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    svg {
+      width: 600px;
+      height: 600px;
+      display: block;
+      margin: 50px auto;
+      filter: drop-shadow(0 0 20px red);
+    }
+    @media (max-width: 768px) {
+  .gallery {
+    gap: 30px;
+  }
+  .gallery-item {
+    width: 90vw;
+    height: auto;
+  }
+  .song-card {
+    width: 90vw;
+  }
+  svg {
+    width: 90vw;
+    height: auto;
+  }
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+  header button {
+    width: 90%;
+    margin-bottom: 10px;
+  }
+  .poem-card, .quote-card {
+    width: 90%;
+    font-size: 15px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <button onclick="showSection('songs')">🎵 Şarkılar</button>
+    <button onclick="showSection('photos')">🖼️ Resimler</button>
+    <button onclick="showSection('poems')">📜 Şiirler</button>
+    <button onclick="showSection('quotes')">💌 Sözler</button>
+    <button onclick="showSection('love')">❤️ Biricik Sevgilim</button>
+  </header>
+
+  <section id="songs">
+    <div class="gallery">
+     
+     <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/3kLvOjwPbxlFzZBT05x64y?utm_source=generator" width="100%" height="900" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+    <div class="spotify-embed" id="spotifyPlayer"></div>
+  </section>
+
+  <section id="photos">
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="gözler.jpeg" alt="Anı">
+        <div class="overlay">
+          <p><br>“Bu gözlerr ah bu gözler baktıkça doyamadığım içinde kaybolduğum gözler ♥”</p>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="teklif.jpeg" alt="Anı">
+        <div class="overlay">
+          <p><br>“Belki bu teklifi gerçekte yapamıyorum ama birgün gerçeğide olucak.”</p>
+        </div>
+      </div>
+       <div class="gallery-item">
+        <img src="çocukuğumuz.jpeg" alt="Anı">
+        <div class="overlay">
+          <p><br>“Gelecekteki biricik çocuğumuz olsa aynı buna benzeyecekmiş çok güzel değil mi aynı annesi.”</p>
+        </div>
+      </div>
+       <div class="gallery-item">
+        <img src="yanyana.jpeg" alt="Anı">
+        <div class="overlay">
+          <p><br>“Belki yan yana çekindiğimiz çok fotoğraf yok ama fotoğrafta yanına gelebilirim.”</p>
+        </div>
+      </div>
+       <div class="gallery-item">
+        <img src="davetiye.jpeg" alt="Anı">
+        <div class="overlay">
+          <p><br>“Düğünümüzde dağıtıcağımız davetiyelerimiz.”</p>
+        </div>
+      </div>
+       <div class="gallery-item">
+        <img src="yarenin gözleri 2.jpg" alt="Anı">
+        <div class="overlay">
+          <p><br>“O biricik hayran kaldığım eşsiz gözlerini artık walpaperımda yaptım heryerde gözlerine bakıyorum.”</p>
+        </div>
+      </div>
+       <div class="gallery-item">
+        <img src="düğün.jpeg" alt="Anı">
+        <div class="overlay">
+          <p><br>“Bu anı unutmak imkansız hayatımın en güzel saniyeleriydi o an. Senin dışında hiçbirşey odağımda değildi. Karşımda sen gözlerimin içine bakıyor ve beraber dans ediyorduk.”</p>
+        </div>
+      </div>
+       <div class="gallery-item">
+        <img src="toplu.jpeg" alt="Anı">
+        <div class="overlay">
+          <p><br>“Tüm anılarımızı sığdırdığımız fotoğraf. Aslında anılarımız diyemeyiz çünkü seninle yaşadığım anılar kalbimde 3 yıldan fazla sanki doğduğum ilk andan beri seni bekliyormuş gibiyim 17 yıllık hayatım var ama sadece 3 yılında yaşadığımı hissettim.”</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="poems">
+    <div class="poem-card">
+     Ben sana mecburum bilemezsin <br>
+Adını mıh gibi aklımda tutuyorum <br>
+Büyüdükçe büyüyor gözlerin <br>
+Ben sana mecburum bilemezsin <br>
+İçimi seninle ısıtıyorum. <br>
+      – Attila İlhan  "Ben Sana Mecburum"
+    </div>
+    <div class="poem-card">
+      Seni düşünmek güzel şey, ümitli şey, <br>
+Dünyanın en güzel sesinden <br>
+En güzel şarkıyı dinlemek gibi bir şey... <br>
+Fakat artık ümit yetmiyor bana, <br>
+Ben artık şarkı dinlemek değil, <br>
+Şarkı söylemek istiyorum. <br>
+       -Nazım Hikmet   "Seni Düşünmek"
+    </div>
+  </section>
+
+  <section id="quotes">
+    <div class="quote-card">
+      Yıldızlara anlatıyorum seni her gece,<br>
+      Ay gibi parlak gözlerin o masmavi çerçeve. <br>
+      Rüzgar savururken sarı saçlarını hayalimde, <br>
+      Ellerin dokunmasa da, kalbim hâlâ sende. <br> 
+      Ne yollar engel olur, ne zaman unutturur seni bu gönülde. <br>
+<br>
+<br>
+<br>
+      bu senin için yazdığım bir akroştişti tabi bunu sana söyleyemeden ayrıldık :( .
+    </div>
+     <div class="quote-card">
+     Bu siteyi yapmaya başladığımda biz sevgiliydik. Yani seni çok seviyordum ve bu, yıl dönümümüzde vereceğim bir hediyeydi. Ama siteyi bitirmeden ayrıldık. Evet, ayrılmayı ben istedim ama buna mecburdum. Bilemiyorum, söylemek istediğim çok şey var ama sanki sözler ağzımdan çıkmak istemiyor. <br>
+
+Ne bileyim... Çok sevdiğin birinden ayrılmak gerçekten çok zor geliyor bana. Hemen unutamıyorum. Hem bence sen de unutamıyorsundur. Koca üç yılı unutmak kolay değildir. Aslında “koca üç yıl” diyorum da, zaten hayatımda sadece bu üç yıl boyunca gerçekten yaşadım. Ondan öncesi yoktu sanki. Sanki seninle doğmuşum gibi. <br>
+
+Evet, ayrıldık belki ama... Sakın üzülme olur mu? Hayatta hiçbir şey seni üzmesin. Hep gül çünkü güldüğünde çok güzelsin. Gözlerinin içi parlıyor, yanaklarını sıkasım geliyor. <br>
+
+Ben seni çok seviyorum. Ve görüşemesek bile aklımda mutlaka olacaksın. Lütfen bana bir söz ver; üzülmeyeceğine dair. Eğer bir gün kendini yalnız hissedersen ya da bir şeye çok kırılırsan, gelip bana yazabilirsin. Derdini dinlerim, sana yardım ederim, yalnızlığını gideririm. <br>
+
+Lütfen benim için hep iyi kal, civcivim. ❤️ <br>
+
+Elveda… Elveda Yaren. <br>
+Belki gelecekte karşılaşırız ve o gün seninle doyasıya konuşmak isterim. Lütfen beni gör, olur mu? <br>
+
+Seni seviyorum… <br>
+Seni sonsuza kadar seveceğim. ❤️❤️❤️
+    </div>
+  </section>
+
+  <section id="love">
+    <h1 style="text-align:center; color:#0077B6;">Bu Kalp 3 Yıldır Sana Ait…</h1>
+    <svg viewBox="0 0 100 100">
+      <defs>
+        <!-- Kalp maskesi -->
+        <mask id="heartMask">
+          <path d="M50 30 
+                   C50 15, 15 15, 15 40 
+                   C15 65, 50 90, 50 90 
+                   C50 90, 85 65, 85 40 
+                   C85 15, 50 15, 50 30 Z"
+                fill="white"/>
+        </mask>
+      </defs>
+      <!-- Fotoğraf -->
+      <image 
+        href="IMG_2598.JPG" 
+        width="100" 
+        height="100" 
+        mask="url(#heartMask)"
+        preserveAspectRatio="xMidYMid slice"/>
+      <!-- Kalp çerçevesi -->
+      <path id="heartPath"
+        d="M50 30 
+           C50 15, 15 15, 15 40 
+           C15 65, 50 90, 50 90 
+           C50 90, 85 65, 85 40 
+           C85 15, 50 15, 50 30 Z"
+        stroke="red"
+        stroke-width="2"
+        fill="none"/>
+    </svg>
+  </section>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      if (id === 'love') animateHeart();
+    }
+
+    function animateHeart() {
+      let heartPath = document.getElementById('heartPath');
+      if (!heartPath) return;
+
+      let pathLength = heartPath.getTotalLength();
+      heartPath.style.strokeDasharray = pathLength;
+      heartPath.style.strokeDashoffset = pathLength;
+      heartPath.getBoundingClientRect();
+      heartPath.style.transition = 'stroke-dashoffset 4s ease';
+      heartPath.style.strokeDashoffset = '0';
+
+      setTimeout(() => {
+        heartPath.style.fill = 'none';
+      }, 4000);
+    }
+
+    function showSpotify(url) {
+      document.getElementById('spotifyPlayer').innerHTML = `
+        <iframe style="border-radius:12px" src="${url}" width="100%" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" loading="lazy"></iframe>
+      `;
+    }
+  </script>
+</body>
+</html>

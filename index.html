@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aşk Oyunu Neon Kalp</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle, #3a31ea, #23cdef);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: sans-serif;
+      overflow: hidden;
+    }
+    h1 {
+      color: #fff;
+      text-shadow: 2px 2px #1e00ff;
+      font-size: 3em;
+      margin-bottom: 30px;
+      z-index: 10;
+    }
+    button {
+      background-color: #00eeff;
+      border: none;
+      color: #fff;
+      padding: 15px 30px;
+      margin: 20px;
+      font-size: 1.2em;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 10;
+    }
+    #result {
+      position: relative;
+      margin-top: 20px;
+    }
+    #loveImage {
+      max-width: 300px;
+      border-radius: 15px;
+      opacity: 0;
+      transition: opacity 2s ease;
+      z-index: 1;
+      position: relative;
+    }
+    svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 400px;
+      height: 400px;
+      transform: translate(-50%, -50%);
+      display: none;
+      overflow: visible;
+      z-index: 2;
+    }
+    #heartPath {
+      filter: drop-shadow(0 0 10px #ff6f91);
+    }
+  </style>
+</head>
+<body>
+  <h1>Birlikte 3 yıl, daha nice yıllara var mıyız?</h1>
+  <div>
+    <button id="yesBtn">Evet</button>
+    <button id="noBtn">Hayır</button>
+  </div>
+  <div id="result">
+    <img id="loveImage" src="" alt="Aşk Fotoğrafı" />
+    
+    <svg id="heartSVG" viewBox="0 0 100 100">
+      <defs>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#ff3e66"/>
+          <stop offset="100%" stop-color="#ff9a9e"/>
+        </linearGradient>
+      </defs>
+      <path id="heartPath"
+        d="M50 30 
+           C50 15, 15 15, 15 40 
+           C15 65, 50 90, 50 90 
+           C50 90, 85 65, 85 40 
+           C85 15, 50 15, 50 30 Z"
+        stroke="url(#grad1)"
+        stroke-width="2"
+        fill="none"
+        stroke-linecap="round"
+      />
+    </svg>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const loveImage = document.getElementById('loveImage');
+    const svg = document.getElementById('heartSVG');
+    const heartPath = document.getElementById('heartPath');
+
+    let messages = ["Emin misin?", "Yine mi hayır?", "Bence evet demelisin!", "Bir daha düşün!", "Hayır deme :("];
+    let msgIndex = 0;
+
+    noBtn.addEventListener('mouseenter', () => {
+      let x = Math.random() * (window.innerWidth - 150);
+      let y = Math.random() * (window.innerHeight - 50);
+      noBtn.style.position = 'absolute';
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+
+      noBtn.textContent = messages[msgIndex % messages.length];
+      msgIndex++;
+    });
+
+  yesBtn.addEventListener('click', () => {
+  window.location.href = 'surprise.html';
+});
+
+
+  
+  </script>
+</body>
+</html>
